@@ -2,6 +2,8 @@
 import java.io.File;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class GuessTheMovie {
@@ -25,12 +27,12 @@ public class GuessTheMovie {
             String line = scanner2.nextLine();
             films[count] = line;
             count++;
-           // System.out.println(line.split("").length); //długość nazw
+
         }
 
         Random random= new Random();
         String cinema=films[random.nextInt(count)];
-        //System.out.println(films[random.nextInt(count)]); //długość nazw
+
         System.out.println(cinema);
         char[] cinemaArray = cinema.toCharArray();
         System.out.println(cinemaArray);
@@ -41,32 +43,45 @@ public class GuessTheMovie {
         System.out.println( "Spróbuj zgadnąć:  ");
 
         Scanner scanner1 = new Scanner(System.in);
-        for (int i=10; i>0; i--){
-          System.out.println("Masz " + i + " prób." );
-          String guess = scanner1.nextLine();
-          int a = cinema.indexOf(guess);
-               // System.out.println(a);
-
-                    if(a==-1){
-                        System.out.println("brak");
-                    }
-                    else {
-                       System.out.println(a);
-                       zmianaArray[a]=guess.charAt(0);
-                       System.out.println(zmianaArray);
-                            int b = cinema.indexOf(guess,a+1);
-                            if(b!=-1) {
-                                System.out.println(b);
-                                zmianaArray[b] = guess.charAt(0);
-                                System.out.println(zmianaArray);
-                            }
-
-                       }
+        for (int i=10; i>0; i--) {
+            System.out.println("Masz " + i + " prób.");
+            String guess = scanner1.nextLine();
+            char[] guessArray = guess.toCharArray();
+            int a = cinema.indexOf(guess);
+            // System.out.println(a);
 
 
+            if (guess.equals(cinema)) {
+                System.out.print("Gratuluję wygranej!");
+
+            }
+            else if(i == 1 && !guess.equals(cinema)) {
+
+                System.out.println("Przegrana");
+            }
+            else if (a == -1) {
+                System.out.println("Brak litery, spróbuj ponownie");
+            }
+
+            else if(a!=-1) {
+                System.out.println(a);
+                zmianaArray[a] = guess.charAt(0);
+                System.out.println(zmianaArray);
 
 
+                int b = cinema.indexOf(guess, a + 1);
+                if (b != -1) {
+                    System.out.println(b);
+                    zmianaArray[b] = guess.charAt(0);
+                    System.out.println(zmianaArray);
 
+
+                }
+            }
+
+        }
+
+        }
 
         }
 
@@ -78,8 +93,6 @@ public class GuessTheMovie {
 
 
 
-    }
 
 
-}
 
