@@ -28,7 +28,9 @@ public class GuessTheMovie {
            // System.out.println(line.split("").length); //długość nazw
         }
 
-        System.out.println(films[8]);
+        Random random= new Random();
+
+        System.out.println(films[random.nextInt(count)]); //długość nazw
 
 
     }
