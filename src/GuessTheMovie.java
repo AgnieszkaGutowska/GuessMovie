@@ -42,7 +42,7 @@ public class GuessTheMovie {
 
         Scanner scanner1 = new Scanner(System.in);
         for (int i=10; i>0; i--){
-            System.out.println("Masz " + i + " prób." );
+          System.out.println("Masz " + i + " prób." );
           String guess = scanner1.nextLine();
           int a = cinema.indexOf(guess);
                // System.out.println(a);
@@ -54,7 +54,19 @@ public class GuessTheMovie {
                        System.out.println(a);
                        zmianaArray[a]=guess.charAt(0);
                        System.out.println(zmianaArray);
-                    }
+                            int b = cinema.indexOf(guess,a+1);
+                            if(b!=-1) {
+                                System.out.println(b);
+                                zmianaArray[b] = guess.charAt(0);
+                                System.out.println(zmianaArray);
+                            }
+
+                       }
+
+
+
+
+
 
         }
 
